@@ -16,10 +16,11 @@ public class ArrowPool : MonoBehaviour
 
     private void Start()
     {
+        var parent = GetComponent<Transform>();
         _arrows = new MoveProjectile[_poolSize];
         for (int i = 0; i < _poolSize; i++)
         {
-            _arrows[i] = Instantiate(_arrowTemplate);
+            _arrows[i] = Instantiate(_arrowTemplate, parent);
             _arrows[i].gameObject.SetActive(false);
         }
     }

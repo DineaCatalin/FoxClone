@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6326623306326606719}
   - component: {fileID: 6326623306326606718}
   - component: {fileID: 783247005}
+  - component: {fileID: 228964354}
   m_Layer: 10
   m_Name: Treeman
   m_TagString: Enemy
@@ -93,7 +94,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: -5158144027585599536, guid: 96dbc52b66b8d0b47b5c1045f92652c4,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -168,8 +169,8 @@ MonoBehaviour:
   _movementSpeed: 3.5
   _waypointDistanceThreshhold: 1
   _waypoints:
-  - {x: 10, y: 0, z: 0}
-  - {x: -10, y: 0, z: 0}
+  - {x: -2, y: -5.13, z: 0}
+  - {x: 11.98, y: -5.13, z: 0}
 --- !u!114 &783247005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,3 +186,19 @@ MonoBehaviour:
   _HP: 6
   _animator: {fileID: 6326623306326606707}
   _enemyMove: {fileID: 6326623306326606718}
+  _onHitFlash: {fileID: 228964354}
+--- !u!114 &228964354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6326623306326606706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 022b806a60bb5294c9df089b0889728c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flashDuration: 0.1
+  _flashRepeatStepDuration: 0
+  _spriteRenderer: {fileID: 6326623306326606717}

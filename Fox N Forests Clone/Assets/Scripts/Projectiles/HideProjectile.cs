@@ -15,7 +15,8 @@ public class HideProjectile : MonoBehaviour
 
     private void OnEnable()
     {
-        DeactivateAsync().Forget();
+        //DeactivateAsync().Forget();
+        Invoke("Deactivate", _autoDestructionTime);
     }
 
     public void Deactivate()

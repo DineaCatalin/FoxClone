@@ -10,12 +10,27 @@ public class EnemyMovement : MonoBehaviour
     private float _waypointDistanceThreshhold;
 
     [SerializeField]
-    private List<Vector3> _waypoints;
+    private List<Transform> _waypointTransforms;
+
+    private Vector3[] _waypoints;
 
     private int _currentWaypointIndex;
+    private float _flipForward;
+    private float _flipBack;
 
-    private void Start()
+    private void Awake()
     {
+        var count = _waypointTransforms.Count;
+        _waypoints = new Vector3[count];
+        for (int i = 0; i < count; i++)
+        {
+            _waypoints[i] = _waypointTransforms[i].position;
+        }
+
+        var scale = transform.localScale;
+        _flipBack = -scale.x;
+        _flipForward = scale.x;
+
         SetFlip();
     }
 
@@ -24,7 +39,7 @@ public class EnemyMovement : MonoBehaviour
         var currentWaypoint = _waypoints[_currentWaypointIndex];
         if (Vector3.Distance(transform.position, currentWaypoint) < _waypointDistanceThreshhold)
         {
-            _currentWaypointIndex = (++_currentWaypointIndex) % _waypoints.Count;
+            _currentWaypointIndex = (++_currentWaypointIndex) % _waypoints.Length;
             currentWaypoint = _waypoints[_currentWaypointIndex];
 
             SetFlip();
@@ -40,15 +55,7 @@ public class EnemyMovement : MonoBehaviour
         var currentWaypoint = _waypoints[_currentWaypointIndex];
 
         var scale = transform.localScale;
-        scale.x = currentWaypoint.x > transform.position.x ? -1 : 1;
+        scale.x = currentWaypoint.x > transform.position.x ? _flipBack : _flipForward;
         transform.localScale = scale;
-    }
-
-    private void OnDrawGizmos()
-    {
-        for (int i = 0; i < _waypoints.Count; i++)
-        {
-            Gizmos.DrawSphere(_waypoints[i], 0.35f);
-        }
     }
 }

@@ -158,6 +158,12 @@ public class CharacterController : MonoBehaviour
         }
 	}
 
+	public void AddForce(Vector2 force)
+    {
+		Debug.Log($"CharacterController AddForce {force}");
+		m_Rigidbody2D.AddForce(force);
+    }
+
 	public bool CanShoot()
     {
 		return m_Grounded && m_Move == 0;
@@ -167,7 +173,7 @@ public class CharacterController : MonoBehaviour
     {
 		// Add a vertical force to the player.
 		m_Grounded = false;
-		m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+		m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_JumpForce);
 		m_IsFalling = false;
 
 		// Fire Jump Event

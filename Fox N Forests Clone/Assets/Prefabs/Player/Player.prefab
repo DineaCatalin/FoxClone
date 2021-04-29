@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342533650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.15, y: 0, z: 0}
+  m_LocalPosition: {x: 0.68, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1214076200181568808}
@@ -42,12 +42,15 @@ GameObject:
   - component: {fileID: 1214076200181568812}
   - component: {fileID: 1214076200181568807}
   - component: {fileID: 7177294942147458768}
+  - component: {fileID: 9139714050916863484}
   - component: {fileID: 7281949}
   - component: {fileID: 7281942}
   - component: {fileID: 1214076200181568809}
   - component: {fileID: 1214076200181568811}
   - component: {fileID: 1214076200181568810}
   - component: {fileID: 1513331575}
+  - component: {fileID: 2146073129}
+  - component: {fileID: 2146073130}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -167,10 +170,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abbab399bbb14774f8a4c59a899e5294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootDelay: 0.25
-  _arrowSpawnPoint: {fileID: 342533651}
+  _shootCooldown: 0.3
+  _shootDelay: 0.15
   _arrowPool: {fileID: 0}
   _animator: {fileID: 7281949}
+  _controller: {fileID: 1214076200181568807}
+--- !u!114 &9139714050916863484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214076200181568805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 976f60aae3372ce4fa15d0a3fcb4eab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _knockbackForce: 250
+  _controller: {fileID: 1214076200181568807}
+  _invulnerability: {fileID: 2146073129}
 --- !u!95 &7281949
 Animator:
   serializedVersion: 3
@@ -228,7 +247,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: -1414433494340932581, guid: 8cb72e2a98df7d24ebf5ff58de09405c,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -320,6 +339,35 @@ CircleCollider2D:
   m_Offset: {x: 0.42324007, y: -0.457}
   serializedVersion: 2
   m_Radius: 0.29
+--- !u!114 &2146073129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214076200181568805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 025f1804dfb88b746b4cc59c8c4c3702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 3.5
+  _flash: {fileID: 2146073130}
+--- !u!114 &2146073130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214076200181568805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 022b806a60bb5294c9df089b0889728c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flashDuration: 0
+  _flashRepeatStepDuration: 0.35
+  _spriteRenderer: {fileID: 7281942}
 --- !u!1 &1214076200635357066
 GameObject:
   m_ObjectHideFlags: 0

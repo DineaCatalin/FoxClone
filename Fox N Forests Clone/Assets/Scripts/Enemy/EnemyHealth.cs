@@ -14,11 +14,14 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]
     private EnemyMovement _enemyMove;
 
+    [SerializeField]
+    private Flash _onHitFlash;
 
     public void Damage()
     {
         _HP--;
-        if(_HP <= 0)
+        _onHitFlash.StartFlash();
+        if (_HP <= 0)
         {
             PrepareDeath();
         }
